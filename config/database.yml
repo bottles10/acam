@@ -81,9 +81,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: acam_production
-    username: acam
-    password: <%= ENV["ACAM_DATABASE_PASSWORD"] %>
+    url: <%= Rails.application.credentials.dig(:database_url) %>
   cache:
     <<: *primary_production
     database: acam_production_cache
